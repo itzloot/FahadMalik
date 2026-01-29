@@ -139,7 +139,7 @@
                         </div>
 
                         <h2 class="text-2xl font-bold text-white">@zephyr.dev</h2>
-                        <p class="text-xs text-gray-500 mb-4">Budapest, HU • Local Time <span id="clock">--:--</span></p>
+                        <p class="text-xs text-gray-500 mb-4">Tokyo, Japan • <span id="clock">--:--</span> JST</p>
 
                         <div class="bg-white/5 border border-white/5 rounded-xl p-3 flex items-center gap-3">
                             <div id="act-img" class="w-10 h-10 rounded-lg bg-black flex items-center justify-center overflow-hidden">
@@ -302,9 +302,15 @@
         setInterval(updateProfile, 5000);
         updateProfile();
 
-        // Clock
+        // Clock - TOKYO TIMEZONE
         setInterval(() => {
-            document.getElementById('clock').innerText = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            const time = new Date().toLocaleTimeString('en-US', {
+                timeZone: 'Asia/Tokyo',
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: false
+            });
+            document.getElementById('clock').innerText = time;
         }, 1000);
     </script>
 </body>
